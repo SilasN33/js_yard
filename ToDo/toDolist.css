@@ -1,0 +1,22 @@
+.alinhamento{
+    display: flex;
+}
+
+.imagem{
+    max-width: 60%;
+    height: 850px;
+}
+
+.formulario{
+    display: table-column;
+    margin-left: 12VH;
+    align-items: center;
+    margin-top: 35vh;
+    width: 350px;
+}
+
+.senha_input{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
