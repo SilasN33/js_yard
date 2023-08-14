@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="toDolist.js"></script>
+    
 
 
 </head>
@@ -21,22 +21,28 @@
         <div class="formulario">    
             <h1>ToDo 🗒️</h1>
             <div class="form-floating mb-6 email_input">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
                 <div class="senha_input">
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" class="form-control " id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
                  </div> 
-                 <div class="botoes">
-                    <button type="button" class="btn btn-primary">Login</button>
-                    <button type="button" class="btn btn-outline-secondary">Sign in</button>
-                </div> 
+                    <div class="botoes">
+                        <button type="button" class="btn btn-primary">Login</button>
+                        <button type="button" onclick="criaUsuario()" class="btn btn-outline-secondary">Sign in</button>
+                    </div> 
+
+                    <div class="">
+
+                    </div>
             </div>
           
         </div>
 </div>
+
+<script src="toDolist.js"></script>
              
 
     
