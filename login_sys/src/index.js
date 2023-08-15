@@ -24,18 +24,20 @@ app.listen(3000,() =>{
 
 // Rotas
 app.get("/", (req,res)=> {
-    res.render("login")
+    res.render("home")
 })
 
 app.get("/signup", (req,res)=> {
     res.render("signup")
 })
 
+app.get("/login", (req,res)=> {
+    res.render("login")
+})
+
 
 // O uso do async ocorre por conta do uso do mongodb
-app.post("/login",async (req,res) =>{
-
-})
+// Rotas que utilizam metodo post para validar e inserir os usuarios no banco
 
 app.post("/signup",async (req,res) =>{
     
@@ -46,7 +48,7 @@ const data = {
 
 try {
     await model.insertMany([data])
-    console.log("Dados inseridos no MongoDB com sucesso.")
+    console.log("Usuario cadastrado com sucesso.")
     res.render('home')
 } catch (error) {
     console.error("Erro ao inserir dados no MongoDB:", error)
@@ -55,3 +57,21 @@ try {
 
 
 })
+
+app.post("/login",async (req,res) =>{
+    
+try{
+    const verificaUsuario = await model.findOne({name: req.body.name})
+
+    if(verificaUsuario.password === req.body.password){
+        res.render('home')
+    }
+    else{
+        res.send("Senha Incorreta")
+    }
+}
+catch{
+    res.send("Dados invalidos")
+}
+
+    })
