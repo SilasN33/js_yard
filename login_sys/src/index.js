@@ -24,7 +24,7 @@ app.listen(3000,() =>{
 
 // Rotas
 app.get("/", (req,res)=> {
-    res.render("home")
+    res.render("home_home")
 })
 
 app.get("/signup", (req,res)=> {
@@ -58,20 +58,21 @@ try {
 
 })
 
-app.post("/login",async (req,res) =>{
-    
-try{
-    const verificaUsuario = await model.findOne({name: req.body.name})
-
-    if(verificaUsuario.password === req.body.password){
-        res.render('home')
+app.post("/login", async (req, res) => {
+    try {
+      const verificaUsuario = await model.findOne({ name: req.body.name });
+  
+      if (verificaUsuario && verificaUsuario.password === req.body.password) {
+        // Simulação de tempo para demonstração do efeito de loading
+        await new Promise(resolve => setTimeout(resolve, 500));
+  
+        res.json({ success: true }); // Responde com JSON de sucesso
+      } else {
+        res.json({ success: false, error: "Senha incorreta" }); // Responde com JSON de erro
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      res.json({ success: false, error: "Dados inválidos" }); // Responde com JSON de erro
     }
-    else{
-        res.send("Senha Incorreta")
-    }
-}
-catch{
-    res.send("Dados invalidos")
-}
-
-    })
+  });
+  
