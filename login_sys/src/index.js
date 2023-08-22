@@ -8,6 +8,7 @@ const model = require("./mongodb")
 // Apontamento para o diretório dos templates
 const templatePath = path.join(__dirname, '../templates')
 
+app.use(express.static('public'));
 
 //Conexão do Mongodb com os files hbs
 app.use(express.json())

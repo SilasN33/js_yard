@@ -6,44 +6,212 @@
   <title>Login Page</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
+  <!-- CSS -->
   <style>
     body {
-      background-color: #f8f9fa;
-    }
-    .login-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-card {
-      width: 300px;
-      padding: 20px;
-      background-color: #ffffff;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
-    .login-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .login-form {
-      margin-bottom: 20px;
-    }
-    .loading-card {
-      display: none;
-      text-align: center;
-      margin-top: 20px;
-    }
+    background-color: white;
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .login-card {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .login-form {
+    margin-bottom: 20px;
+  }
+
+  .botao_login{
+  --font-color: #fefefe;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  margin-top: 10px;
+  width: 260px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+}
+.botao_login:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+.sucess-user{
+    margin-top: 30px;
+}
+
+.invalid-user{
+    margin-top: 30px;
+}
+
+.loader_welcome {
+  position: absolute;
+  margin-left: 130px;
+  margin-top: 40px;
+}
+
+.loader_welcome p {
+  position: absolute;
+  justify-content: flex-start;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  font-size: 38px;
+  letter-spacing: 5px;
+}
+
+.loader_welcome p:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 0.3px rgb(1, 6, 21);
+}
+
+.loader_welcome p:nth-child(2) {
+  color: rgb(0, 0, 0);
+  -webkit-text-stroke: 1px rgb(0, 0, 2);
+  animation: uiverse723 3s ease-in-out infinite;
+}
+
+@keyframes uiverse723 {
+  0%, 100% {
+    clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 
+     54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+  }
+
+  50% {
+    clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 
+     51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
+
+.container_welcome{
+  width: 200px;
+  height: 100px;
+}
+
+.wrapper {
+  width: 200px;
+  height: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #000;
+  left: 15%;
+  transform-origin: 50%;
+  animation: circle7124 .5s alternate infinite ease;
+}
+
+@keyframes circle7124 {
+  0% {
+    top: 60px;
+    height: 5px;
+    border-radius: 50px 50px 25px 25px;
+    transform: scaleX(1.7);
+  }
+
+  40% {
+    height: 20px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+.circle:nth-child(2) {
+  left: 45%;
+  animation-delay: .2s;
+}
+
+.circle:nth-child(3) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
+
+.shadow {
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 62px;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 15%;
+  filter: blur(1px);
+  animation: shadow046 .5s alternate infinite ease;
+}
+
+@keyframes shadow046 {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scaleX(.2);
+    opacity: .4;
+  }
+}
+
+.shadow:nth-child(4) {
+  left: 45%;
+  animation-delay: .2s
+}
+
+.shadow:nth-child(5) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
+
+.load_card{
+  margin-top: 35px;
+  margin-left: 27px;
+}
+
   </style>
 </head>
 <body>
 
 <div class="login-container">
   <div class="login-card">
-    <h1 class="login-title">Welcome Back!</h1>
+    <div class="container_welcome">
+      <div class="loader_welcome">
+        <p>Welcome</p>
+        <p>Welcome</p>
+      </div>
+    </div>
+    
     <form class="login-form" id="loginForm">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -53,35 +221,40 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
       </div>
-      <button type="submit" class="btn btn-primary btn-block" id="loginButton">Login</button>
+      <button type="submit" class="botao_login" id="loginButton">Login</button>
     </form>
-    <div class="loading-card" id="loadingCard">
-      <div class="card p-3 text-center">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="mt-2">Loading...</div>
+    <div class="load_card" style="display: none;">
+      <div class="wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
       </div>
-      <div class="invalid-user" id="invalidUser" style="display: none; color: red;">Usuário não encontrado</div>
+    </div>
+      <div class="invalid-user" id="invalidUser" style="color: red; display:none;">Usuário não encontrado</div>
+      <div class="sucess-user" id="succes_user" style="color: green;  display:none;">Usuário Encontrado</div>
     </div>
   </div>
 </div>
 
-<!-- Include Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
-    const loginButton = document.getElementById('loginButton');
-    const loadingCard = document.getElementById('loadingCard');
+    const loadingCard = document.querySelector('.load_card');
     const invalidUserMessage = document.getElementById('invalidUser');
+    const suceesUserMessage = document.getElementById('succes_user')
 
     loginForm.addEventListener('submit', async (event) => {
       event.preventDefault(); // Impede o envio padrão do formulário
 
       loadingCard.style.display = 'block'; // Mostrar o loading card
       invalidUserMessage.style.display = 'none'; // Esconder a mensagem de usuário não encontrado
+      suceesUserMessage.style.display = 'none' // Esconder a mensagem de usuário encontrado
 
       try {
         const formData = new FormData(loginForm);
@@ -99,25 +272,39 @@
 
         const data = await response.json();
 
-        if (data.success) {
-          // Redirecionar para a página de sucesso ou qualquer ação necessária
-          window.location.href = '/home';
-        } else {
-          // Exibir mensagem de usuário não encontrado
-          invalidUserMessage.style.display = 'block';
-          console.error("Erro ao fazer login:", data.error);
-        }
+            if (data.success) {
+               setTimeout(() => {
+                loadingCard.style.display = 'block';
+                 setTimeout(() => {
+                loadingCard.style.display = 'none';
+                suceesUserMessage.style.display = 'block';
+                
+            }, 3000);
+            }, 5000);
 
-        // Aumentar a duração da exibição do loading card (por exemplo, 3 segundos)
-        setTimeout(() => {
-          loadingCard.style.display = 'none'; // Esconder o loading card
-        }, 3000);
+            
+            
+            suceesUserMessage.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = '/home';
+            }, 3000);
+            } else {
+          loadingCard.style.display = 'block'
+          setTimeout(() => {
+            invalidUserMessage.style.display = 'block'
+            loadingCard.style.display = 'none'
+          }, 5000);
+          setTimeout(() => {
+            console.error("Erro ao fazer login:", data.error);
+          }, 3000);
+        }
       } catch (error) {
         console.error("Erro ao fazer login:", error);
         loadingCard.style.display = 'none'; // Esconder o loading card
       }
     });
-  });
+});
 </script>
 
 </body>
