@@ -35,7 +35,7 @@
 
   .botao_login{
   --font-color: #fefefe;
-  --bg-color: #111;
+  --bg-color: rgb(255, 175, 63);;
   --main-color: #fefefe;
   margin-top: 10px;
   width: 260px;
@@ -79,12 +79,12 @@
 
 .loader_welcome p:nth-child(1) {
   color: transparent;
-  -webkit-text-stroke: 0.3px rgb(1, 6, 21);
+  -webkit-text-stroke: 0.3px rgb(255, 175, 63);
 }
 
 .loader_welcome p:nth-child(2) {
-  color: rgb(0, 0, 0);
-  -webkit-text-stroke: 1px rgb(0, 0, 2);
+  color: rgb(255, 175, 63);
+  -webkit-text-stroke: 1px rgb(255, 175, 63);
   animation: uiverse723 3s ease-in-out infinite;
 }
 
@@ -105,100 +105,85 @@
   height: 100px;
 }
 
-.wrapper {
-  width: 200px;
-  height: 60px;
-  position: relative;
-  z-index: 1;
-}
-
-.circle {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  border-radius: 50%;
-  background-color: #000;
-  left: 15%;
-  transform-origin: 50%;
-  animation: circle7124 .5s alternate infinite ease;
-}
-
-@keyframes circle7124 {
-  0% {
-    top: 60px;
-    height: 5px;
-    border-radius: 50px 50px 25px 25px;
-    transform: scaleX(1.7);
-  }
-
-  40% {
-    height: 20px;
-    border-radius: 50%;
-    transform: scaleX(1);
-  }
-
-  100% {
-    top: 0%;
-  }
-}
-
-.circle:nth-child(2) {
-  left: 45%;
-  animation-delay: .2s;
-}
-
-.circle:nth-child(3) {
-  left: auto;
-  right: 15%;
-  animation-delay: .3s;
-}
-
-.shadow {
-  width: 20px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(0,0,0,0.9);
-  position: absolute;
-  top: 62px;
-  transform-origin: 50%;
-  z-index: -1;
-  left: 15%;
-  filter: blur(1px);
-  animation: shadow046 .5s alternate infinite ease;
-}
-
-@keyframes shadow046 {
-  0% {
-    transform: scaleX(1.5);
-  }
-
-  40% {
-    transform: scaleX(1);
-    opacity: .7;
-  }
-
-  100% {
-    transform: scaleX(.2);
-    opacity: .4;
-  }
-}
-
-.shadow:nth-child(4) {
-  left: 45%;
-  animation-delay: .2s
-}
-
-.shadow:nth-child(5) {
-  left: auto;
-  right: 15%;
-  animation-delay: .3s;
-}
-
 .load_card{
   margin-top: 35px;
-  margin-left: 27px;
+  margin-left: 0px;
 }
 
+.spinner {
+ position: relative;
+ width: 56px;
+ height: 56px;
+ margin-left: 6.5rem;
+}
+
+.spinner > div {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ border: 13px solid rgba(181, 126, 16, 0.196);
+ position: absolute;
+ top: 0;
+ left: 0;
+ animation: spinner-g7vlvwmd 0.65s linear infinite;
+ z-index: 0;
+}
+
+.spinner > div::before {
+ content: '';
+ height: 13px;
+ width: 13px;
+ border-radius: 50%;
+ background: #ff8a23;
+ position: absolute;
+ top: 50%;
+ animation: spinner-h1vps1md 1.3s infinite reverse steps(1);
+ transform: translate(calc(2 * var(--translate-2)), calc(var(--translate) * 1%));
+ z-index: 1;
+}
+
+.spinner > div:nth-of-type(1) {
+ --translate: -50;
+ --translate-2: calc(56px / 8);
+}
+
+.spinner > div:nth-of-type(1)::before {
+ right: 0;
+}
+
+.spinner > div:nth-of-type(2) {
+ --translate: 50;
+ --translate-2: calc(-56px / 8);
+ animation-delay: 0.65s;
+ animation-direction: reverse;
+ transform: translate(21.5px, 0);
+}
+
+.spinner > div:nth-of-type(2)::before {
+ left: 0;
+ transform: translate(calc(-56px / 4), -50%);
+ animation-direction: normal;
+}
+
+@keyframes spinner-h1vps1md {
+ 0% {
+  opacity: 0;
+ }
+
+ 50% {
+  opacity: 1;
+ }
+}
+
+@keyframes spinner-g7vlvwmd {
+ from {
+  transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2)), 0) rotate(0deg);
+ }
+
+ to {
+  transform: translate(calc(var(--translate) * 1%), 0) translate(calc(var(--translate-2)), 0) rotate(360deg);
+ }
+}
   </style>
 </head>
 <body>
@@ -224,14 +209,10 @@
       <button type="submit" class="botao_login" id="loginButton">Login</button>
     </form>
     <div class="load_card" style="display: none;">
-      <div class="wrapper">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
-      </div>
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        </div>
     </div>
       <div class="invalid-user" id="invalidUser" style="color: red; display:none;">Usuário não encontrado</div>
       <div class="sucess-user" id="succes_user" style="color: green;  display:none;">Usuário Encontrado</div>
@@ -250,11 +231,11 @@
     const suceesUserMessage = document.getElementById('succes_user')
 
     loginForm.addEventListener('submit', async (event) => {
-      event.preventDefault(); // Impede o envio padrão do formulário
+      event.preventDefault(); 
 
-      loadingCard.style.display = 'block'; // Mostrar o loading card
-      invalidUserMessage.style.display = 'none'; // Esconder a mensagem de usuário não encontrado
-      suceesUserMessage.style.display = 'none' // Esconder a mensagem de usuário encontrado
+      loadingCard.style.display = 'block'; 
+      invalidUserMessage.style.display = 'none'; 
+      suceesUserMessage.style.display = 'none' 
 
       try {
         const formData = new FormData(loginForm);
@@ -281,9 +262,6 @@
                 
             }, 3000);
             }, 5000);
-
-            
-            
             suceesUserMessage.style.display = 'block';
 
             setTimeout(() => {
@@ -301,7 +279,7 @@
         }
       } catch (error) {
         console.error("Erro ao fazer login:", error);
-        loadingCard.style.display = 'none'; // Esconder o loading card
+        loadingCard.style.display = 'none'; 
       }
     });
 });

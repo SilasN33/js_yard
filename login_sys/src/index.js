@@ -36,6 +36,9 @@ app.get("/login", (req,res)=> {
     res.render("login")
 })
 
+app.get("/home", (req,res)=> {
+  res.render("home")
+})
 
 // O uso do async ocorre por conta do uso do mongodb
 // Rotas que utilizam metodo post para validar e inserir os usuarios no banco
