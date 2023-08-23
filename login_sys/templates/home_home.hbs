@@ -8,63 +8,96 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .modal-content {
-      background-color: #ffffff;
-    }
-    .welcome-text {
-      font-size: 24px;
-      margin-bottom: 20px;
-      display: none;
-    }
+    .card {
+  width: 290px;
+  height: 370px;
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.container_principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 13rem;
+}
+
+button {
+  padding: 0.1em 0.25em;
+  width: 13em;
+  height: 4.2em;
+  background-color: #212121;
+  border: 0.08em solid #fff;
+  border-radius: 0.3em;
+  font-size: 12px;
+}
+
+button span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0.4em;
+  width: 8.25em;
+  height: 2.5em;
+  background-color: #212121;
+  border-radius: 0.2em;
+  font-size: 1.5em;
+  color: #fff;
+  border: 0.08em solid #fff;
+  box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+button span:hover {
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #fff;
+}
+
+button span:not(hover) {
+  transition: all 1s;
+}
+
+.botao_alinha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+.botao_alinha2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
   </style>
 </head>
 <body>
-
-<!-- Welcome Modal -->
-<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="welcomeModalLabel">Welcome</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="welcome-text"></p>
-        <button class="btn btn-primary" onclick="window.location.href='/singup'">Sign In</button>
-        <button class="btn btn-secondary" onclick="window.location.href='/login'">Login</button>
-      </div>
+<div class="container-fluid container_principal">
+  <div class="card">
+    <div class="botao_alinha">
+      <button onclick="/signup">
+        <span>
+            Sign Up
+        </span>
+      </button>
     </div>
+     <div class="botao_alinha2">
+      <button class="button2" >
+        <span>
+            <a href="/login">Login</a>
+        </span>
+      </button>
+    </div>
+
   </div>
 </div>
-
-<!-- Include jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JS -->
-<script>
-  // Welcome text typing effect
-  const welcomeTextElement = document.querySelector('.welcome-text');
-  const welcomeText = "Welcome to our website!";
-  let index = 0;
-
-  function typeWelcomeText() {
-    if (index < welcomeText.length) {
-      welcomeTextElement.textContent += welcomeText.charAt(index);
-      index++;
-      setTimeout(typeWelcomeText, 50);
-    }
-  }
-
-  // Show modal and start typing effect on page load
-  $(document).ready(function() {
-    $('#welcomeModal').modal('show');
-    typeWelcomeText();
-  });
-</script>
 
 </body>
 </html>
